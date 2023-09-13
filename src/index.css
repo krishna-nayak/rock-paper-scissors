@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-image: radial-gradient(
+    ellipse at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  font-family: "Barlow Semi Condensed", sans-serif;
+  color: #fff;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 250px;
+  min-width: 100px;
+  aspect-ratio: 1/1;
+  background-image: url("./assets/images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 200px auto;
+}
+
+.object {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+.object div {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0px 5px 0 1px #aaa;
+}
+
+.object div img {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rock-position {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: translate(-50%, -50%);
+}
+
+.paper-position {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  transform: translate(50%, -50%);
+}
+.scissor-position {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.rock.object {
+  /* background-color: saddlebrown; */
+  background-image: linear-gradient(
+    to bottom,
+    hsl(349, 71%, 52%),
+    hsl(349, 70%, 56%)
+  );
+  box-shadow: inset 0px -5px 0 1px hsl(349, 60%, 40%);
+}
+.scissor.object {
+  background-image: linear-gradient(
+    to bottom,
+    hsl(39, 89%, 49%),
+    hsl(40, 84%, 53%)
+  );
+  box-shadow: inset 0px -5px 0 1px hsl(39, 92%, 40%);
+}
+.paper.object {
+  background-image: linear-gradient(
+    to bottom,
+    hsl(230, 89%, 62%),
+    hsl(230, 89%, 65%)
+  );
+  box-shadow: inset 0px -5px 0 1px rgb(44, 44, 137);
+}
+main {
+  /* padding: 0 100px; */
+}
+
+#header {
+  margin: 20px auto;
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 3px solid hsl(217, 16%, 45%);
+  border-radius: 5px;
+}
+
+.header-text-section div {
+  font-size: 2rem;
+  line-height: 0.8;
+}
+
+.score-board {
+  background: #fff;
+  color: #000;
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-board h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: hsl(229, 64%, 46%);
+  letter-spacing: 2px;
+}
+
+.score-board h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: hsl(217, 16%, 45%);
+}
+
+.rule-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 15px;
+  border: 2px solid #fff;
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  right: 40px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.rule-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.result {
+  padding: 10px;
+  width: 200px;
+  /* margin: 0 100px; */
+}
+
+.block {
+  width: auto;
+  visibility: visible;
+  transition: all 0.2s ease-in-out;
+}
+.hidden {
+  width: 0px;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+#arena {
+  display: flex;
+  gap: 10%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 50px auto;
+  width: max-content;
+  font-size: 2rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+#arena .title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+  transition: all 0.2s ease-in-out;
+  text-wrap: nowrap;
+}
+
+#arena .object,
+#arena .object {
+  margin: 0 auto;
+}
+
+/* TODO: 600px: score ui must be change  */
+
+@media (max-width: 600px) {
+  .object {
+    width: 150px;
+    height: 150px;
+  }
+  .object div {
+    width: 100px;
+    height: 100px;
+  }
+  #arena .title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 365px) {
+  .object {
+    width: 100px;
+    height: 100px;
+  }
+  .object div {
+    width: 50px;
+    height: 50px;
+  }
+  #arena .title {
+    font-size: 0.8rem;
+  }
+}
+
+/* .object.winner::after {
+  width: 500px;
+  aspect-ratio: 1/1;
+  content: "";
+  background: #000;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+  box-shadow: inset 0px 0px 0 50px #aaa, inset 0px 0px 0 100px #b12a2a;
+} */
