@@ -148,23 +148,6 @@ function App() {
           </div>
         </section>
       </main>
-      <br />
-      <br />
-      User
-      <div style={{ backgroundColor: "#fff" }}>
-        <img src={objectData[user]} alt={objectData[user]} />
-      </div>
-      <br />
-      Computer
-      <div style={{ backgroundColor: "#fff" }}>
-        <img src={objectData[computer]} alt={objectData[computer]} />
-      </div>
-      <div>
-        <h1>{result}</h1>
-      </div>
-      <div>
-        <h1>{score}</h1>
-      </div>
     </div>
   );
 }
