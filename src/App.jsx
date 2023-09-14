@@ -2,6 +2,7 @@ import rock from "./assets/images/icon-rock.svg";
 import paper from "./assets/images/icon-paper.svg";
 import scissor from "./assets/images/icon-scissors.svg";
 import { useState } from "react";
+import Decisioin from "./Decisioin";
 
 const options = ["rock", "scissor", "paper"];
 // const optionImage = [rock, scissor, paper];
@@ -90,66 +91,57 @@ function App() {
         </div>
       </header>
       <main>
-        <div className="wrapper">
-          <div className="rock-position">
-            <div onClick={() => handleClick("rock")} className="rock object">
-              <div>
-                <img src={rock} alt="rock" />
-              </div>
-            </div>
-          </div>
-          <div className="paper-position">
-            <div onClick={() => handleClick("paper")} className="paper object">
-              <div>
-                <img src={paper} alt="paper" />
-              </div>
-            </div>
-          </div>
+        {user === null ? (
+          <Choices handleClick={handleClick} />
+        ) : (
+          <Decisioin
+            user={user}
+            objectData={objectData}
+            result={result}
+            computer={computer}
+            setResult={setResult}
+            setUser={setUser}
+          />
+        )}
 
-          <div className="scissor-position">
-            <div
-              onClick={() => handleClick("scissor")}
-              className="scissor object"
-            >
-              <div>
-                <img src={scissor} alt="scissor" />
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Display after choices */}
 
         {/* rules */}
         <div>
           <button className="rule-btn">Rules</button>
         </div>
-
-        {/* Display after choices */}
-
-        <section id="arena">
-          <div className="user-choice">
-            <div className="title">your picked</div>
-            <div className={user + " object winner"}>
-              <div>
-                <img src={objectData[user]} alt={user} />
-              </div>
-            </div>
-          </div>
-          <div className={result === null ? "hidden" : "result block"}>
-            <h1>{result}</h1>
-            <button onClick={() => setResult(null)}>Play Again</button>
-          </div>
-          <div className="computer-choice">
-            <div className="title">the House Picked</div>
-            <div className={computer + " object"}>
-              <div>
-                <img src={objectData[computer]} alt={computer} />
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );
 }
+
+const Choices = ({ handleClick }) => {
+  return (
+    <div className="wrapper">
+      <div className="rock-position">
+        <div onClick={() => handleClick("rock")} className="rock object">
+          <div>
+            <img src={rock} alt="rock" />
+          </div>
+        </div>
+      </div>
+      <div className="paper-position">
+        <div onClick={() => handleClick("paper")} className="paper object">
+          <div>
+            <img src={paper} alt="paper" />
+          </div>
+        </div>
+      </div>
+
+      <div className="scissor-position">
+        <div onClick={() => handleClick("scissor")} className="scissor object">
+          <div>
+            <img src={scissor} alt="scissor" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default App;

@@ -7,12 +7,16 @@
 }
 
 body {
-  height: 100vh;
+  /* max-height: 100vh; */
+  min-height: 100vh;
+  /* height: clamp(100vh, 100vh, 100vh); */
   background-image: radial-gradient(
     ellipse at top,
     hsl(214, 47%, 23%),
     hsl(237, 49%, 15%)
   );
+  background-repeat: repeat;
+  background-size: 100% 100%;
   font-family: "Barlow Semi Condensed", sans-serif;
   color: #fff;
 }
@@ -25,7 +29,7 @@ body {
   background-image: url("./assets/images/bg-triangle.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  margin: 200px auto;
+  margin: 20vh auto;
 }
 
 .object {
@@ -219,6 +223,10 @@ main {
 /* TODO: 600px: score ui must be change  */
 
 @media (max-width: 600px) {
+  .wrapper {
+    max-width: 200px;
+    min-width: 100px;
+  }
   .object {
     width: 150px;
     height: 150px;
@@ -233,6 +241,9 @@ main {
 }
 
 @media (max-width: 365px) {
+  .wrapper {
+    margin: 150px auto 100px;
+  }
   .object {
     width: 100px;
     height: 100px;
@@ -244,6 +255,10 @@ main {
   #arena .title {
     font-size: 0.8rem;
   }
+}
+
+.object:active {
+  transform: scale(0.9);
 }
 
 /* .object.winner::after {
