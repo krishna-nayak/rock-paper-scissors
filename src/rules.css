@@ -1,0 +1,43 @@
+.rule-modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #00000080;
+
+  transition: all 0.2s ease-in-out;
+  color: #00000080;
+}
+
+.rule-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  height: 100vh;
+  overflow-y: scroll;
+  transition: all 0.2s ease-in-out;
+}
+
+.rule-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.rule-modal-body {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  margin-top: 100px;
+}
