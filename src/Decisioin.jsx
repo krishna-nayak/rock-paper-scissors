@@ -18,16 +18,19 @@ export default function Decisioin({
     setUser,
     showResult,
   });
+  const reset = () => {
+    setResult(null);
+    setUser(null);
+  };
   const size = useSize();
+  console.log(size.width);
+
   return (
     <>
       <section id="arena">
         <div className={"user-choice"}>
           <div className="title">your picked</div>
-          <div
-            // className="winner"
-            className={result === "Win" ? "winner" : ""}
-          >
+          <div className={result === "Win" ? "winner" : ""}>
             <div className={user + " object "}>
               <div>
                 <img src={objectData[user]} alt={user} />
@@ -35,16 +38,10 @@ export default function Decisioin({
             </div>
           </div>
         </div>
-        {size.width >= 600 ? (
+        {size.width >= 800 ? (
           <div className={showResult ? "result block" : "hidden"}>
             <h1>{result}</h1>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                setResult(null);
-                setUser(null);
-              }}
-            >
+            <button className="btn btn-primary" onClick={reset}>
               Play Again
             </button>
           </div>
@@ -52,10 +49,7 @@ export default function Decisioin({
 
         <div className="computer-choice">
           <div className="title">the House Picked</div>
-          <div
-            // className={"winner"}
-            className={result === "Loose" ? "winner" : ""}
-          >
+          <div className={result === "Loose" ? "winner" : ""}>
             <div className={computer + " object"}>
               <div>
                 <img src={objectData[computer]} alt={computer} />
@@ -64,16 +58,10 @@ export default function Decisioin({
           </div>
         </div>
       </section>
-      {size.width < 600 ? (
+      {size.width < 800 ? (
         <div className={showResult ? "result block text-center" : "hidden"}>
           <h1>{result}</h1>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              setResult(null);
-              setUser(null);
-            }}
-          >
+          <button className="btn btn-primary" onClick={reset}>
             Play Again
           </button>
         </div>

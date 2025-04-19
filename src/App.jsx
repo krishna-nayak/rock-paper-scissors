@@ -1,6 +1,6 @@
-import rock from "./assets/images/icon-rock.svg";
-import paper from "./assets/images/icon-paper.svg";
-import scissor from "./assets/images/icon-scissors.svg";
+import rockImg from "./assets/images/icon-rock.svg";
+import paperImg from "./assets/images/icon-paper.svg";
+import scissorImg from "./assets/images/icon-scissors.svg";
 import { useState } from "react";
 import Decisioin from "./Decisioin";
 
@@ -10,13 +10,13 @@ import "./rules.css";
 
 const options = ["rock", "scissor", "paper"];
 
-const objectData = {
-  rock: rock,
-  scissor: scissor,
-  paper: paper,
+const IMAGE_DATA = {
+  rock: rockImg,
+  scissor: scissorImg,
+  paper: paperImg,
 };
 
-const winner = {
+const WINNER = {
   scissor: { rock: "Win", scissor: "Draw", paper: "Loose" },
   rock: { rock: "Draw", scissor: "Loose", paper: "Win" },
   paper: { rock: "Loose", scissor: "Win", paper: "Draw" },
@@ -43,7 +43,7 @@ function App() {
   };
 
   const handlePlay = (user, computer) => {
-    const decide = winner[user][computer];
+    const decide = WINNER[user][computer];
     setResult(decide);
     if (decide === "Win") {
       setScore(score + 1);
@@ -78,7 +78,7 @@ function App() {
         ) : (
           <Decisioin
             user={user}
-            objectData={objectData}
+            objectData={IMAGE_DATA}
             result={result}
             computer={computer}
             setResult={setResult}
@@ -127,14 +127,14 @@ const Choices = ({ handleClick }) => {
       <div className="rock-position">
         <div onClick={() => handleClick("rock")} className="rock object">
           <div>
-            <img src={rock} alt="rock" />
+            <img src={rockImg} alt="rock" />
           </div>
         </div>
       </div>
       <div className="paper-position">
         <div onClick={() => handleClick("paper")} className="paper object">
           <div>
-            <img src={paper} alt="paper" />
+            <img src={paperImg} alt="paper" />
           </div>
         </div>
       </div>
@@ -142,7 +142,7 @@ const Choices = ({ handleClick }) => {
       <div className="scissor-position">
         <div onClick={() => handleClick("scissor")} className="scissor object">
           <div>
-            <img src={scissor} alt="scissor" />
+            <img src={scissorImg} alt="scissor" />
           </div>
         </div>
       </div>
