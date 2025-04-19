@@ -9,12 +9,17 @@ import RuleImage from "./assets/images/image-rules.svg";
 import "./rules.css";
 
 const options = ["rock", "scissor", "paper"];
-// const optionImage = [rock, scissor, paper];
 
 const objectData = {
   rock: rock,
   scissor: scissor,
   paper: paper,
+};
+
+const winner = {
+  scissor: { rock: "Win", scissor: "Draw", paper: "Loose" },
+  rock: { rock: "Draw", scissor: "Loose", paper: "Win" },
+  paper: { rock: "Loose", scissor: "Win", paper: "Draw" },
 };
 
 function App() {
@@ -38,61 +43,18 @@ function App() {
   };
 
   const handlePlay = (user, computer) => {
-    const object = {};
-    object[computer] = { name: "computer" };
-    object[user] = { name: "user" };
-    if (Object.keys(object).length === 2) {
-      console.log("Play", object);
-      const ouput = winnerDecide(object, user, computer);
-
-      console.log(ouput.winner);
-      setResult(ouput.winner.name === "user" ? "Win" : "Loose");
-      if (ouput.winner.name === "user") {
-        setScore(score + 1);
-      } else {
-        setScore(score - 1);
-      }
-
-      setTimeout(() => {
-        setShowResult(true);
-      }, 1000);
-    } else {
-      console.log("Draw");
-      setResult("Draw");
-      setTimeout(() => {
-        setShowResult(true);
-      }, 1000);
+    const decide = winner[user][computer];
+    setResult(decide);
+    if (decide === "Win") {
+      setScore(score + 1);
+    } else if (decide === "Loose") {
+      setScore(score - 1);
     }
+    setTimeout(() => {
+      setShowResult(true);
+    }, 1000);
   };
-  const winnerDecide = (object, user, computer) => {
-    const output = { winner: null };
-    switch (user) {
-      case "rock":
-        if (computer === "scissor") {
-          output.winner = object[user];
-        } else {
-          output.winner = object[computer];
-        }
-        break;
 
-      case "scissor":
-        if (computer === "paper") {
-          output.winner = object[user];
-        } else {
-          output.winner = object[computer];
-        }
-        break;
-      case "paper":
-        if (computer === "rock") {
-          output.winner = object[user];
-        } else {
-          output.winner = object[computer];
-        }
-        break;
-    }
-
-    return output;
-  };
   return (
     <div>
       {/* Score board */}
@@ -107,9 +69,7 @@ function App() {
           <h1>{score}</h1>
         </div>
       </header>
-      <main
-        className={user === null ? "animation" : "animation animation-begin"}
-      >
+      <main className={user === null ? "animation" : "animation animation-begin"}>
         <span>Rock</span>
         <span>Paper</span>
         <span>Scissors</span>
@@ -191,63 +151,3 @@ const Choices = ({ handleClick }) => {
 };
 
 export default App;
-
-/* 
-
-<section id="arena">
-          <div className="user-choice">
-            <div className="title">your picked</div>
-            <div className={user + " object winner"}>
-              <div>
-                <img src={objectData[user]} alt={user} />
-              </div>
-            </div>
-          </div>
-          <div className={result === null ? "hidden" : "result block"}>
-            <h1>{result}</h1>
-            <button onClick={() => setResult(null)}>Play Again</button>
-          </div>
-          <div className="computer-choice">
-            <div className="title">the House Picked</div>
-            <div className={computer + " object"}>
-              <div>
-                <img src={objectData[computer]} alt={computer} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        // other
-
-
-
-
-         <div className="wrapper">
-          <div className="rock-position">
-            <div onClick={() => handleClick("rock")} className="rock object">
-              <div>
-                <img src={rock} alt="rock" />
-              </div>
-            </div>
-          </div>
-          <div className="paper-position">
-            <div onClick={() => handleClick("paper")} className="paper object">
-              <div>
-                <img src={paper} alt="paper" />
-              </div>
-            </div>
-          </div>
-
-          <div className="scissor-position">
-            <div
-              onClick={() => handleClick("scissor")}
-              className="scissor object"
-            >
-              <div>
-                <img src={scissor} alt="scissor" />
-              </div>
-            </div>
-          </div>
-        </div>
-*/

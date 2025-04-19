@@ -9,7 +9,7 @@ export default function Decisioin({
   setUser,
   showResult,
 }) {
-  console.log({
+  console.log("", {
     user,
     objectData,
     result,
