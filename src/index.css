@@ -255,9 +255,9 @@ body {
 }
 
 .animation {
-  /* position: relative; */
+  position: relative;
   /* border: 3px solid red; */
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 html {
   position: relative;
