@@ -17,9 +17,9 @@ const IMAGE_DATA = {
 };
 
 const WINNER = {
-  scissor: { rock: "Win", scissor: "Draw", paper: "Loose" },
-  rock: { rock: "Draw", scissor: "Loose", paper: "Win" },
-  paper: { rock: "Loose", scissor: "Win", paper: "Draw" },
+  scissor: { rock: "Loose", scissor: "Draw", paper: "Win" },
+  rock: { rock: "Draw", scissor: "Win", paper: "Loose" },
+  paper: { rock: "Win", scissor: "Loose", paper: "Draw" },
 };
 
 function App() {
